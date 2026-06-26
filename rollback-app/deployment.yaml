@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rollme
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rollme
+  template:
+    metadata:
+      labels:
+        app: rollme
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27-alpine    # GOOD version (healthy)
+          ports:
+            - containerPort: 80
